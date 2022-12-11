@@ -89,8 +89,9 @@ class Device:
         return np.matrix(self.crt_printout)
 
 
-def part_1():
-    handheld = Device()
+def run():
+    handheld1 = Device()
+    handheld2 = Device()
 
     with open("Day 10/input.txt") as data:
         temp = data.read().splitlines()
@@ -103,39 +104,17 @@ def part_1():
             # For now noop
             else:
                 cycles_to_complete = 0
-            handheld.add_to_queue(
-                Executable(
-                    type,
-                    cycles_to_complete,
-                    adjustment,
-                )
+            executable = Executable(
+                type,
+                cycles_to_complete,
+                adjustment,
             )
-        return handheld.run_part_1()
+            # Part 1
+            handheld1.add_to_queue(executable)
+            # Part 2
+            handheld2.add_to_queue(executable)
+        return handheld2.run_part_2()
 
 
-def part_2():
-    handheld = Device()
-
-    with open("Day 10/input.txt") as data:
-        temp = data.read().splitlines()
-        for line in temp:
-            split = line.split(" ")
-            type = split[0]
-            adjustment = int(split[1]) if len(split) == 2 else 0
-            if type == "addx":
-                cycles_to_complete = 1
-            # For now noop
-            else:
-                cycles_to_complete = 0
-            handheld.add_to_queue(
-                Executable(
-                    type,
-                    cycles_to_complete,
-                    adjustment,
-                )
-            )
-        return handheld.run_part_2()
-
-
-res = part_2()
+res = run()
 print(res)
