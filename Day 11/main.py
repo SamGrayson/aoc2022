@@ -1,4 +1,4 @@
-import functools
+import math
 from typing import List
 
 
@@ -16,9 +16,7 @@ class MonkeyBusiness:
     def __init__(self, monkeys, lower_worry_levels=True):
         self.monkeys = monkeys
         self.lower_worry_levels = lower_worry_levels
-        self.lcm = functools.reduce(
-            lambda x, y: x * y, [m.test for k, m in monkeys.items()]
-        )
+        self.lcm = math.lcm(*[m.test for k, m in monkeys.items()])
 
     def process_item(self, item, monkey: Monkey):
         # Turn into an eval string
