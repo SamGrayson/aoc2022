@@ -93,6 +93,11 @@ class Grid(object):
                 if v in COLLISION_CHARS:
                     self.edges.add((y, x))
 
+    def detect_full_row(self):
+        for y, row in reversed(list(enumerate(self.grid))):
+            if all([v in ["|", "@"] for v in row]):
+                self.grid = self.grid[: y + 1]
+
     def add_starting_shape(self, new_row):
         # Add padding above the grid as needed between each shape.
         needed_padding = 3
@@ -207,6 +212,9 @@ def part_1(limit=2022):
             shape_i = 0
         shape = shape_input[shape_i]
         shape_i += 1
+        # See if there is a fully blocked row, delete everything under it.
+        main_grid.detect_full_row()
+
         # Create the new row based on the hight & width of the grid
         new_row = shape.get_starting_row(len(main_grid.grid), len(main_grid.grid[0]))
         # Add that new row the grid and update the edges - required to get starting positions set.
@@ -238,5 +246,5 @@ def part_1(limit=2022):
     return len(main_grid.grid) - (main_grid.highest_y + 1)
 
 
-res = part_1()
+res = part_1(1000000000000)
 print(res)
