@@ -1,0 +1,150 @@
+Blueprint 1
+    ore_robot=2 ore
+    clay_robot=2 ore
+    obsidian_robot=2 ore,20 clay
+    geode_robot=2 ore,14 obsidian
+Blueprint 2
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,17 clay
+    geode_robot=4 ore,16 obsidian
+Blueprint 3
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,16 clay
+    geode_robot=3 ore,14 obsidian
+Blueprint 4
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,18 clay
+    geode_robot=2 ore,11 obsidian
+Blueprint 5
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,19 clay
+    geode_robot=2 ore,14 obsidian
+Blueprint 6
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,7 clay
+    geode_robot=2 ore,16 obsidian
+Blueprint 7
+    ore_robot=2 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,20 clay
+    geode_robot=3 ore,14 obsidian
+Blueprint 8
+    ore_robot=2 ore
+    clay_robot=3 ore
+    obsidian_robot=3 ore,17 clay
+    geode_robot=3 ore,10 obsidian
+Blueprint 9
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,6 clay
+    geode_robot=4 ore,11 obsidian
+Blueprint 10
+    ore_robot=4 ore
+    clay_robot=3 ore
+    obsidian_robot=2 ore,14 clay
+    geode_robot=4 ore,11 obsidian
+Blueprint 11
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,8 clay
+    geode_robot=2 ore,15 obsidian
+Blueprint 12
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=2 ore,11 clay
+    geode_robot=3 ore,14 obsidian
+Blueprint 13
+    ore_robot=4 ore
+    clay_robot=3 ore
+    obsidian_robot=3 ore,15 clay
+    geode_robot=2 ore,13 obsidian
+Blueprint 14
+    ore_robot=4 ore
+    clay_robot=3 ore
+    obsidian_robot=3 ore,10 clay
+    geode_robot=2 ore,10 obsidian
+Blueprint 15
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=2 ore,11 clay
+    geode_robot=2 ore,10 obsidian
+Blueprint 16
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=2 ore,19 clay
+    geode_robot=2 ore,12 obsidian
+Blueprint 17
+    ore_robot=4 ore
+    clay_robot=3 ore
+    obsidian_robot=4 ore,19 clay
+    geode_robot=4 ore,12 obsidian
+Blueprint 18
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,20 clay
+    geode_robot=2 ore,12 obsidian
+Blueprint 19
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=2 ore,17 clay
+    geode_robot=3 ore,11 obsidian
+Blueprint 20
+    ore_robot=2 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,16 clay
+    geode_robot=4 ore,17 obsidian
+Blueprint 21
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,17 clay
+    geode_robot=3 ore,7 obsidian
+Blueprint 22
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,7 clay
+    geode_robot=4 ore,20 obsidian
+Blueprint 23
+    ore_robot=2 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,20 clay
+    geode_robot=2 ore,17 obsidian
+Blueprint 24
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=4 ore,6 clay
+    geode_robot=3 ore,16 obsidian
+Blueprint 25
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,6 clay
+    geode_robot=2 ore,14 obsidian
+Blueprint 26
+    ore_robot=3 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,18 clay
+    geode_robot=4 ore,16 obsidian
+Blueprint 27
+    ore_robot=2 ore
+    clay_robot=4 ore
+    obsidian_robot=3 ore,17 clay
+    geode_robot=4 ore,20 obsidian
+Blueprint 28
+    ore_robot=4 ore
+    clay_robot=4 ore
+    obsidian_robot=2 ore,11 clay
+    geode_robot=2 ore,7 obsidian
+Blueprint 29
+    ore_robot=4 ore
+    clay_robot=3 ore
+    obsidian_robot=4 ore,18 clay
+    geode_robot=3 ore,13 obsidian
+Blueprint 30
+    ore_robot=3 ore
+    clay_robot=3 ore
+    obsidian_robot=3 ore,16 clay
+    geode_robot=3 ore,9 obsidian

@@ -1,0 +1,11 @@
+SKIP Blueprint 1: Each ore robot costs 4 ore Each clay robot costs 2 ore Each obsidian robot costs 3 ore and 14 clay Each geode robot costs 2 ore and 7 obsidian
+Blueprint 1
+    ore_robot=4 ore
+    clay_robot=2 ore
+    obsidian_robot=3 ore,14 clay
+    geode_robot=2 ore,7 obsidian
+Blueprint 2
+    ore_robot=2 ore
+    clay_robot=3 ore
+    obsidian_robot=3 ore,8 clay
+    geode_robot=3 ore,12 obsidian
