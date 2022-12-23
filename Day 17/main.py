@@ -82,6 +82,7 @@ class Grid(object):
         self.grid = np.full((1, x + 2), "-")
         self.padding = padding
         self.highest_y = highest_y
+        self.appened_height = 0
         self.y = y
         self.x = x
 
@@ -96,6 +97,7 @@ class Grid(object):
     def detect_full_row(self):
         for y, row in reversed(list(enumerate(self.grid))):
             if all([v in ["|", "@"] for v in row]):
+                self.appened_height += len(self.grid[y:])
                 self.grid = self.grid[: y + 1]
 
     def add_starting_shape(self, new_row):
@@ -180,9 +182,27 @@ class Grid(object):
         return (new_collisions, collision)
 
 
+comparitor = np.array(
+    [
+        ["|", ".", "@", ".", ".", ".", ".", ".", "|"],
+        ["|", ".", "@", ".", ".", ".", ".", ".", "|"],
+        ["|", ".", "@", ".", "@", ".", ".", ".", "|"],
+        ["|", ".", "@", ".", "@", ".", ".", ".", "|"],
+        ["|", ".", "@", "@", "@", ".", ".", ".", "|"],
+        ["|", ".", "@", ".", ".", ".", ".", ".", "|"],
+        ["|", "@", "@", "@", "@", "@", ".", ".", "|"],
+        ["|", ".", "@", ".", "@", "@", ".", ".", "|"],
+        ["|", ".", "@", "@", "@", "@", ".", ".", "|"],
+        ["-", "-", "-", "-", "-", "-", "-", "-", "-"],
+    ]
+)
+
+
 def part_1(limit=2022):
     # Stopped Count
     stopped_count = 0
+    # Tracking comparison.
+    compare_length = None
 
     # Get the input
     with open("Day 17/input.txt") as data:
@@ -207,10 +227,40 @@ def part_1(limit=2022):
 
     # Loop through each of the shapes for movement.
     shape_i = 0
+    len_added = 0
+
     for i in tqdm(range(limit)):
         if shape_i == 5:
+            if all(
+                [
+                    ["|", ".", "@", ".", ".", ".", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", ".", ".", ".", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", ".", "@", ".", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", ".", "@", ".", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", "@", "@", ".", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", ".", ".", ".", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", "@", "@", "@", "@", "@", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", ".", "@", "@", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                    ["|", ".", "@", "@", "@", "@", ".", ".", "|"]
+                    in main_grid.grid[:18].tolist(),
+                ]
+            ):
+                print(len(main_grid.grid))
+                print(main_grid.highest_y)
+                print("WOAH PATTERN!!!")
+                if len(main_grid.grid) > 21:
+                    exit(0)
             shape_i = 0
         shape = shape_input[shape_i]
+        # print(main_grid.grid)
         shape_i += 1
         # See if there is a fully blocked row, delete everything under it.
         main_grid.detect_full_row()
@@ -242,6 +292,11 @@ def part_1(limit=2022):
                 main_grid.set_collision(collisions)
                 main_grid.set_highest_rock_y()
                 keep_going_dawg = False
+
+        if compare_length and np.array_equal(
+            np.array(main_grid.grid[:1000]), np.array(compare_length)
+        ):
+            print(len(main_grid.grid))
 
     return len(main_grid.grid) - (main_grid.highest_y + 1)
 
