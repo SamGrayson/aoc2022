@@ -48,6 +48,7 @@ class Cube:
 def part_1():
 
     faces = set()
+    touching_faces = set()
 
     with open("Day 18/input_sample.txt") as data:
         temp = data.read().splitlines()
@@ -61,6 +62,7 @@ def part_1():
                 if f in faces:
                     print(f)
                     faces.remove(f)
+                    touching_faces.add(f)
                 else:
                     new_faces.append(f)
 
