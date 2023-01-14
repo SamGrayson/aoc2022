@@ -95,11 +95,14 @@ def find_shortest_path(start_point: Point, _minutes=0):
         if not grid_points.get(q_min + 1, None):
             new_grid = simluate_blizzards(grid_points[q_min])
             grid_points[q_min + 1] = new_grid
-            print(f"-- minute: {q_min}")
             # print_for_test(q_min + 1)
 
         # Get the grid point at the time given in the queue for the coordinate
         current_point = grid_points[q_min][coordinate]
+
+        # Exit if we're at the end
+        if current_point.__str__() == ENDING_POINT:
+            return q_min
 
         # Can we stay here safely?
         if not grid_points[q_min + 1][current_point.__str__()].blizzards:
@@ -109,8 +112,6 @@ def find_shortest_path(start_point: Point, _minutes=0):
 
         for adj in current_point.adj:
             # Check if point is the end
-            if adj == ENDING_POINT:
-                return q_min + 1
             adj_point = grid_points[q_min + 1][adj]
             p_in_time = adj + f"-{q_min+1}"
             if (
@@ -122,13 +123,11 @@ def find_shortest_path(start_point: Point, _minutes=0):
                 queue.append(p_in_time)
 
 
-def part_1():
-
+def part_1(backwards=False, starting_grid={}):
     with open("Day 24/input.txt") as data:
         temp = data.read().splitlines()
         x = -1
         y = -1
-        starting_grid = {}
 
         global GRID_HEIGHT
         GRID_HEIGHT = len(temp) - 1
@@ -143,17 +142,22 @@ def part_1():
         global ENDING_POINT
         ENDING_POINT = f"({GRID_WIDTH-1},{GRID_HEIGHT})"
 
-        for line in temp:
-            x += 1
-            y = -1
-            for v in line:
-                y += 1
-                p = Point(y, x, v)
-                starting_grid[p.__str__()] = p
+        if backwards:
+            STARTING_POINT = ENDING_POINT
+            ENDING_POINT = f"(1,0)"
 
-    # Add the adj points to each grid point
-    for p in starting_grid.values():
-        p.set_adjacent_ref(VECTORS, starting_grid)
+        if not starting_grid:
+            for line in temp:
+                x += 1
+                y = -1
+                for v in line:
+                    y += 1
+                    p = Point(y, x, v)
+                    starting_grid[p.__str__()] = p
+
+        # Add the adj points to each grid point
+        for p in starting_grid.values():
+            p.set_adjacent_ref(VECTORS, starting_grid)
 
     grid_points[0] = starting_grid
 
@@ -165,5 +169,23 @@ def part_1():
     return shortest_time
 
 
-res = part_1()
-print(res)
+# Forwards first:
+one = part_1()
+print(f"forwards: {one}")
+
+# Backwards next:
+starting_point = grid_points[one].copy()
+grid_points = {}
+queue = []
+visited = set()
+two = part_1(backwards=True, starting_grid=starting_point)
+print(f"backwards: {two}")
+
+# # Forwards again:
+starting_point = grid_points[two].copy()
+grid_points = {}
+queue = []
+visited = set()
+three = part_1(backwards=False, starting_grid=starting_point)
+print(f"backwards: {three}")
+print(f"Total: {one + two + three}")
