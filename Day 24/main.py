@@ -104,10 +104,6 @@ def simluate_blizzards(_grid_points):
             new_grid[point.__str__()].blizzards.remove(blizzard)
             new_grid[f"({new_x},{new_y})"].blizzards.append(blizzard)
 
-    # Set adjacents again
-    for p in new_grid.values():
-        p.set_adjacent_ref(VECTORS, new_grid)
-
     return new_grid
 
 
@@ -127,7 +123,7 @@ def find_shortest_path(start_point: Point, _minutes=0):
             new_grid = simluate_blizzards(grid_points[q_min])
             grid_points[q_min + 1] = new_grid
             print(f"-- minute: {q_min}")
-            print_for_test(q_min + 1)
+            # print_for_test(q_min + 1)
 
         # Get the grid point at the time given in the queue for the coordinate
         current_point = grid_points[q_min][coordinate]
@@ -155,7 +151,7 @@ def find_shortest_path(start_point: Point, _minutes=0):
 
 def part_1():
 
-    with open("Day 24/input_sample.txt") as data:
+    with open("Day 24/input.txt") as data:
         temp = data.read().splitlines()
         x = -1
         y = -1
