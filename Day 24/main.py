@@ -49,33 +49,6 @@ class Point:
         return f"({self.x},{self.y})"
 
 
-# See if a next blizzard will hit the current point, if not then it's safe for now.
-def is_safe_zone(point: Point, min: int):
-    for k, v in VECTORS.items():
-        new_x = point.x - v[0]
-        new_y = point.y - v[1]
-        # check if the new_x & new_y are walls, if they are, we need to get the edge of the area..
-        if (
-            grid_points[min].get(f"({new_x},{new_y})")
-            and grid_points[min].get(f"({new_x},{new_y})").is_wall
-        ):
-            if k == ">":
-                new_x = GRID_WIDTH - 1
-            if k == "<":
-                new_x = 1
-            if k == "v":
-                new_y = GRID_HEIGHT - 1
-            if k == "^":
-                new_y = 1
-        if (
-            grid_points[min].get(f"({new_x},{new_y})")
-            and k in grid_points[min].get(f"({new_x},{new_y})").blizzards
-        ):
-            return False
-
-    return True
-
-
 # Look at each point in the given grid and if it's a dir vector, move the blizzard
 def simluate_blizzards(_grid_points):
     # Need to refactor....
@@ -129,7 +102,7 @@ def find_shortest_path(start_point: Point, _minutes=0):
         current_point = grid_points[q_min][coordinate]
 
         # Can we stay here safely?
-        if is_safe_zone(current_point, q_min + 1):
+        if not grid_points[q_min + 1][current_point.__str__()].blizzards:
             p_in_time = current_point.__str__() + f"-{q_min+1}"
             if p_in_time not in visited:
                 queue.append(p_in_time)
